@@ -7,7 +7,6 @@ import com.zzuli.housekeepingserver.dao.ProductMapper;
 import com.zzuli.housekeepingserver.dao.extend.ProductExtendMapper;
 import com.zzuli.housekeepingserver.service.ProductService;
 import com.zzuli.housekeepingserver.utils.CustomerException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
     @Resource
     private ProductMapper productMapper;
 
-    @Autowired
+    @Resource
     private ProductExtendMapper productExtendMapper;
 
     @Override

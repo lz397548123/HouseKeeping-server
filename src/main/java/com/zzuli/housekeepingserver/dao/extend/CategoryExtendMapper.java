@@ -14,6 +14,5 @@ import java.util.List;
  */
 
 public interface CategoryExtendMapper {
-
     List<CategoryExtend> selectAllWithChild();
 }

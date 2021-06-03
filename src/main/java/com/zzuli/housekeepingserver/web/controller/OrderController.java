@@ -6,6 +6,7 @@ import com.zzuli.housekeepingserver.service.impl.OrderServiceImpl;
 import com.zzuli.housekeepingserver.utils.Message;
 import com.zzuli.housekeepingserver.utils.MessageUtil;
 import com.zzuli.housekeepingserver.vm.OrderVM;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/order")
+@Api(description = "订单管理接口")
 public class OrderController {
 
     @Autowired
@@ -40,6 +42,7 @@ public class OrderController {
         return MessageUtil.success("success", orderService.findAll());
     }
 
+    @ApiOperation(value = "findById（根据id查询订单信息以及订单中的顾客、员工、地址、订单项信息）")
     @GetMapping("/findById")
     public Message findById(Long id) {
         return MessageUtil.success("success", orderService.findOrderDetailsById(id));
