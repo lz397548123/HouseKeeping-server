@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- mybatis-generator的核心配置文件 -->
+<generatorConfiguration>
+    <classPathEntry location="D:/apache-maven-3.6.1/repository/mysql/mysql-connector-java/8.0.20/mysql-connector-java-8.0.20.jar"/>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 注释 -->
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+            <!-- <property name="suppressDate" value="true" />  是否生成注释代时间戳 -->
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://39.102.43.224:3306/jz_zzqg"
+                        userId="root"
+                        password="liang..100398">
+            <!--产生selectByPrimaryKey -->
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+
+
+        <!--指定生成的类型为java类型，避免数据库中number等类型字段 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--自动生成的实体的存放包路径 -->
+        <javaModelGenerator
+                targetPackage="com.zzuli.housekeepingserver.bean" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--自动生成的*Mapper.xml文件存放路径 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--自动生成的*Mapper.java存放路径 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.zzuli.housekeepingserver.dao" targetProject="./src/main/java">
+            <!--允许子包 -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 是否对model添加 构造函数 -->
+            <property name="constructorBased" value="true"/>
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true"/>
+            <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
+            <property name="immutable" value="false"/>
+        </javaClientGenerator>
+
+
+
+        <!-- 映射配置 -->
+
+        <!--
+
+                <table tableName="cms_article" domainObjectName="Article">
+                    <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+                      <columnOverride column="source" javaType="java.lang.String" jdbcType="VARCHAR" />
+                </table>
+        -->
+
+        <table tableName="jz_product" domainObjectName="Product">
+            <columnOverride column="introduce" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+        <table tableName="jz_category" domainObjectName="Category"/>
+        <table tableName="jz_order" domainObjectName="Order"/>
+        <table tableName="jz_order_line" domainObjectName="OrderLine"/>
+        <table tableName="jz_comment" domainObjectName="Comment"/>
+        <table tableName="jz_address" domainObjectName="Address"/>
+        <table tableName="jz_account_customer" domainObjectName="AccountCustomer"/>
+        <table tableName="jz_account_employee" domainObjectName="AccountEmployee"/>
+        <table tableName="jz_account_system" domainObjectName="AccountSystem"/>
+        <table tableName="base_user" domainObjectName="User"/>
+        <table tableName="base_role" domainObjectName="Role"/>
+        <table tableName="base_privilege" domainObjectName="Privilege"/>
+        <table tableName="base_role_privilege" domainObjectName="RolePrivilege"/>
+
+        <!-- mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate -->
+
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,45 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.11.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "com.arenagod.gradle.MybatisGenerator" version "1.4" // gradle提供的mybatis generator插件
+    id 'java'
+}
+
+
+mybatisGenerator {
+    verbose = true
+    configFile = 'src/main/resources//generatorConfig.xml'
+}
+
+group = 'com.zzuli'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+
+repositories {
+    mavenLocal()
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+}
+
+dependencies {
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // swagger3
+//    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    // swagger api文档 2版本后续升级到3
+    implementation 'io.springfox:springfox-swagger2:2.6.1'
+    implementation 'io.springfox:springfox-swagger-ui:2.6.1'
+    // mysql驱动
+    runtimeOnly 'mysql:mysql-connector-java'
+    // mybatis
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+    implementation 'org.mybatis.generator:mybatis-generator-core:1.4.0'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

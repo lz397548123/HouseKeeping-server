@@ -1,0 +1,26 @@
+# server属性配置
+server:
+  port: 8888
+
+# Spring属性配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.102.43.224:3306/jz_zzqg?characterEncoding=utf8
+    username: root
+    password: liang..100398
+
+# 日志配置
+logging:
+  file:
+    path: d:/data/logs
+    name: d:/data/logs/mylog.log
+  level:
+    com.zzuli.housekeepingserver.dao: debug
+#  config: classpath:config/logback-spring.xml
+
+# Mybatis属性配置
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true  # 开启驼峰命名
+  mapper-locations: classpath:/mapper/**/*.xml
