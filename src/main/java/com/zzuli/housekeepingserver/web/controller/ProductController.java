@@ -34,7 +34,7 @@ public class ProductController {
     private ProductServiceImpl productService;
 
     /**
-     * 查询所有产品，并且级联所属栏目
+     * 查询所有产品，并且级联所属栏目 
      * @return Message
      */
     @GetMapping("/findAllWithCategory")
