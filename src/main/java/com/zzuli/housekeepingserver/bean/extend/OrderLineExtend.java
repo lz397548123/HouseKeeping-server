@@ -1,5 +1,6 @@
 package com.zzuli.housekeepingserver.bean.extend;
 
+import com.zzuli.housekeepingserver.bean.OrderLine;
 import com.zzuli.housekeepingserver.bean.Product;
 
 /**
@@ -10,7 +11,7 @@ import com.zzuli.housekeepingserver.bean.Product;
  * liang         2021/6/4       订单项的拓展类
  */
 
-public class OrderLineExtend extends OrderExtend {
+public class OrderLineExtend extends OrderLine {
     protected Product product;
 
     public Product getProduct() {

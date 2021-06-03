@@ -55,5 +55,8 @@
             <result column="user_id" jdbcType="BIGINT" property="userId"/>
             <result column="username" jdbcType="VARCHAR" property="username"/>
         </association>
+        <collection property="orderLines" ofType="com.zzuli.housekeepingserver.bean.OrderLine"
+                    column="o_id" select="com.zzuli.housekeepingserver.dao.extend.OrderLineExtendMapper.selectByOrderId"
+        />
     </resultMap>
 </mapper>
