@@ -2,6 +2,7 @@ package com.zzuli.housekeepingserver.service;
 
 import com.zzuli.housekeepingserver.bean.Category;
 import com.zzuli.housekeepingserver.bean.extend.CategoryExtend;
+import com.zzuli.housekeepingserver.utils.CustomerException;
 
 import java.util.List;
 
@@ -16,9 +17,9 @@ import java.util.List;
 public interface CategoryService {
     List<Category> findAll();
 
-    void saveOrUpdate(Category category);
+    void saveOrUpdate(Category category) throws CustomerException;
 
-    void deleteById(Long id);
+    void deleteById(Long id) throws CustomerException;
 
     List<CategoryExtend> findAllWithChild();
 

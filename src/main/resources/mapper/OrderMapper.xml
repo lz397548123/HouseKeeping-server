@@ -86,7 +86,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from jz_order
     where id = #{id,jdbcType=BIGINT}
@@ -101,12 +101,12 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zzuli.housekeepingserver.bean.Order">
-    insert into jz_order (id, order_time, total, 
-      status, customer_id, employee_id, 
+  <insert useGeneratedKeys="true" keyProperty="id" id="insert" parameterType="com.zzuli.housekeepingserver.bean.Order">
+    insert into jz_order (id, order_time, total,
+      status, customer_id, employee_id,
       address_id)
-    values (#{id,jdbcType=BIGINT}, #{orderTime,jdbcType=BIGINT}, #{total,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{customerId,jdbcType=BIGINT}, #{employeeId,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=BIGINT}, #{orderTime,jdbcType=BIGINT}, #{total,jdbcType=VARCHAR},
+      #{status,jdbcType=VARCHAR}, #{customerId,jdbcType=BIGINT}, #{employeeId,jdbcType=BIGINT},
       #{addressId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.zzuli.housekeepingserver.bean.Order">

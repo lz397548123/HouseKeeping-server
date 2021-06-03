@@ -33,37 +33,37 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl productService;
 
-    /**
-     * 查询所有产品，并且级联所属栏目 
-     * @return Message
-     */
-    @GetMapping("/findAllWithCategory")
-    public Message findAllWithCategory() {
-        List<ProductExtend> list = productService.findAllWithCategory();
-        return MessageUtil.success(list);
-    }
-
+    @ApiOperation(value = "findAll（查询所有）")
     @GetMapping("/findAll")
     public Message findAll() {
-        List<Product> list = productService.findAll();
-        return MessageUtil.success(list);
+        return MessageUtil.success("success", productService.findAll());
     }
 
-    @ApiOperation(value = "通过ID删除产品信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "唯一编号", required = true, paramType = "query")
-    })
-    @GetMapping("/deleteById")
-    public Message deleteById(Long id) {
-        productService.deleteById(id);
-        return MessageUtil.success("删除成功");
+    /**
+     * 查询所有产品，并且级联所属栏目
+     * @return Message
+     */
+    @ApiOperation(value = "findAllWithCategory（查询所有产品，并且级联所属栏目）")
+    @GetMapping("/findAllWithCategory")
+    public Message findAllWithCategory() {
+        return MessageUtil.success("success", productService.findAllWithCategory());
     }
 
+    @ApiOperation(value = "saveOrUpdate（保存或更新信息）")
     @PostMapping("/saveOrUpdate")
     public Message saveOrUpdate(Product product) {
         productService.saveOrUpdate(product);
         return MessageUtil.success("保存或更新成功");
     }
 
+    @ApiOperation(value = "deleteById（通过ID删除产品信息）")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
+    })
+    @GetMapping("/deleteById")
+    public Message deleteById(Long id) {
+        productService.deleteById(id);
+        return MessageUtil.success("删除成功");
+    }
 
 }

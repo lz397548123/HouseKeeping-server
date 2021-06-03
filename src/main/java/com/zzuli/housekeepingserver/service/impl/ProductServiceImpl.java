@@ -18,7 +18,7 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/2
+ * liang         2021/6/2       产品业务实现类
  */
 
 @Service
@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void saveOrUpdate(Product product) throws CustomerException{
+    public void saveOrUpdate(Product product) throws CustomerException {
         if (product.getId() != null) {
             productMapper.updateByPrimaryKey(product);
         } else {
@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteById(Long id) throws CustomerException{
+    public void deleteById(Long id) throws CustomerException {
         // 先判断该id对应的数据存在不？
         Product product = productMapper.selectByPrimaryKey(id);
         if (product == null) {
@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
         // 当存在，删除
         productMapper.deleteByPrimaryKey(id);
     }
-    // 12312
+
     @Override
     public List<ProductExtend> findAllWithCategory() {
         return productExtendMapper.selectAllWithCategory();

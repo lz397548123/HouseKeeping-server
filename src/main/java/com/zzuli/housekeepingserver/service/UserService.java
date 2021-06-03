@@ -2,6 +2,7 @@ package com.zzuli.housekeepingserver.service;
 
 import com.zzuli.housekeepingserver.bean.User;
 import com.zzuli.housekeepingserver.bean.extend.UserExtend;
+import com.zzuli.housekeepingserver.utils.CustomerException;
 
 import java.util.List;
 
@@ -10,15 +11,15 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/3
+ * liang         2021/6/3       用户业务接口
  */
 
 public interface UserService {
     List<User> findAll();
 
-    void saveOrUpdate(User user);
+    void saveOrUpdate(User user) throws CustomerException;
 
-    void deleteById(Long id);
+    void deleteById(Long id) throws CustomerException;
 
     List<UserExtend> findAllWithRole();
 }
