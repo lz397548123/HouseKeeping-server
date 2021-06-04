@@ -23,5 +23,5 @@ public interface PrivilegeService {
 
     List<PrivilegeExtend> findAllWithChild();
 
-    List<PrivilegeExtend> findRolesInPrivilegeById(Long id);
+    List<PrivilegeExtend>  findWithRoleById(Long id);
 }

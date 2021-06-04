@@ -12,4 +12,20 @@
                extends="com.zzuli.housekeepingserver.dao.ProductMapper.BaseResultMap">
         <association property="category" column="category_id" select="com.zzuli.housekeepingserver.dao.CategoryMapper.selectByPrimaryKey"/>
     </resultMap>
+
+    <select id="findPrivilegeWithRole" parameterType="java.lang.Long" resultMap="RoleInPrivilegeResultMap">
+        SELECT *
+        FROM base_privilege p,
+        base_role r,
+        base_role_privilege rp
+        WHERE p.id = rp.privilege_id
+        AND r.id = rp.role_id
+        AND p.id = #{id}
+    </select>
+
+    <resultMap id="RoleInPrivilegeResultMap" type="com.zzuli.housekeepingserver.bean.Privilege"
+               extends="com.zzuli.housekeepingserver.dao.PrivilegeMapper.BaseResultMap">
+        <collection property="" ofType="com.zzuli.housekeepingserver.bean.Role"
+                    resultMap="com.zzuli.housekeepingserver.dao.RoleMapper.BaseResultMap"/>
+    </resultMap>
 </mapper>

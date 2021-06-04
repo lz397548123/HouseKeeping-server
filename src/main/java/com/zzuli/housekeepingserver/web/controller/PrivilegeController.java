@@ -10,10 +10,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 类说明：
@@ -47,15 +44,23 @@ public class PrivilegeController {
         return MessageUtil.success("success", privilegeService.findAllWithChild());
     }
 
-    @ApiOperation(value = "findRolesInPrivilegeById(根据ID查询拥有该权限的角色)")
-    @GetMapping("/findRolesInPrivilegeById")
-    public Message findRolesInPrivilegeById(Long id) {
-        return MessageUtil.success("success", privilegeService.findRolesInPrivilegeById(id));
+    /**
+     * 查询权限，并且级联相关角色
+     *
+     * @return Message
+     */
+    @ApiOperation(value = "findWithRoleById（查询权限，并且级联相关角色）")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
+    })
+    @GetMapping("/findWithRoleById")
+    public Message findWithRoleById(Long id) {
+        return MessageUtil.success("success", privilegeService.findWithRoleById(id));
     }
 
     @ApiOperation(value = "saveOrUpdate（保存或更新信息）")
     @PostMapping("/saveOrUpdate")
-    public Message saveOrUpdate(Privilege privilege) {
+    public Message saveOrUpdate(@RequestBody Privilege privilege) {
         privilegeService.saveOrUpdate(privilege);
         return MessageUtil.success("保存或更新成功");
     }

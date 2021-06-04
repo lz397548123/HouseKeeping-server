@@ -14,5 +14,5 @@ import java.util.List;
 
 public interface PrivilegeExtendMapper {
     List<PrivilegeExtend> selectAllWithChild();
-    List<PrivilegeExtend> selectById(Long id);
+    List<PrivilegeExtend> selectWithRoleById(Long id);
 }

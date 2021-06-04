@@ -24,10 +24,15 @@ public class PrivilegeExtend extends Privilege {
     public static final String NAME_PAY = "支付";
     public static final String NAME_COMMENT = "评论";
 
-    private List<Privilege> children;
-
+    List<Privilege> children;
 
     private Role role;
+
+    private RolePrivilege rolePrivilege;
+
+    public List<Privilege> getChildren() {
+        return children;
+    }
 
     public Role getRole() {
         return role;
@@ -37,8 +42,12 @@ public class PrivilegeExtend extends Privilege {
         this.role = role;
     }
 
-    public List<Privilege> getChildren() {
-        return children;
+    public RolePrivilege getRolePrivilege() {
+        return rolePrivilege;
+    }
+
+    public void setRolePrivilege(RolePrivilege rolePrivilege) {
+        this.rolePrivilege = rolePrivilege;
     }
 
     public void setChildren(List<Privilege> children) {

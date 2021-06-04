@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface PrivilegeMapper {
-
     long countByExample(PrivilegeExample example);
 
     int deleteByExample(PrivilegeExample example);
@@ -28,4 +27,5 @@ public interface PrivilegeMapper {
     int updateByPrimaryKeySelective(Privilege record);
 
     int updateByPrimaryKey(Privilege record);
+
 }
