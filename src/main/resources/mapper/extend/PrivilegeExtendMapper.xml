@@ -20,7 +20,7 @@
                     column="id" select="selectByParentId"/>
     </resultMap>
 
-    <select id="selectWithRoleById" resultMap="RoleInPrivilegeResultMap">
+    <select id="selectWithRoleById" resultMap="PrivilegeResultMap">
         SELECT p.id            as p_id,
                p.name          as p_name,
                p.path,
@@ -39,12 +39,28 @@
         WHERE p.id = #{id}
     </select>
 
+    <resultMap id="PrivilegeResultMap" type="com.zzuli.housekeepingserver.bean.extend.PrivilegeExtend">
+        <id column="p_id" jdbcType="BIGINT" property="id"/>
+        <result column="p_name" jdbcType="VARCHAR" property="name"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="hidden" jdbcType="BIGINT" property="hidden"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
+        <!-- 多表关联映射 -->
+        <collection property="roles" ofType="com.zzuli.housekeepingserver.bean.Role">
+            <id column="r_id" property="id"/>
+            <result column="r_name" property="name"/>
+        </collection>
+    </resultMap>
+
+
 <!--    <select id="selectRolePrivilegePID" parameterType="java.lang.Long" resultMap="com.zzuli.housekeepingserver.dao.RolePrivilegeMapper.BaseResultMap">-->
 <!--        select *-->
 <!--        from base_role_privilege-->
 <!--        where privilege_id = #{id,jdbcType=BIGINT}-->
 <!--    </select>-->
-
+<!--
     <resultMap id="RoleInPrivilegeResultMap" type="com.zzuli.housekeepingserver.bean.extend.PrivilegeExtend">
         <id column="p_id" jdbcType="BIGINT" property="id"/>
         <result column="p_name" jdbcType="VARCHAR" property="name"/>
@@ -61,11 +77,11 @@
         <association property="role" javaType="com.zzuli.housekeepingserver.bean.Role">
             <id column="r_id" jdbcType="BIGINT" property="id"/>
             <result column="r_name" jdbcType="VARCHAR" property="name"/>
-        </association>
+        </association>-->
 <!--        <collection property="rolePrivileges" ofType="com.zzuli.housekeepingserver.bean.RolePrivilege"-->
 <!--                    column="privilege_id" select="selectRolePrivilegePID"/>-->
 <!--        <collection property="roles" ofType="com.zzuli.housekeepingserver.bean.Role"-->
 <!--                    column="role_id" select="com.zzuli.housekeepingserver.dao.RoleMapper.selectByPrimaryKey"/>-->
-    </resultMap>
+<!--    </resultMap>-->
 
 </mapper>
