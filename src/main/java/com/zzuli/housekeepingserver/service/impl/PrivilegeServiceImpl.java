@@ -61,8 +61,8 @@ public class PrivilegeServiceImpl implements PrivilegeService {
     }
 
     @Override
-    public List<PrivilegeExtend> findRolesInPrivilegeById(Long id) {
-        return privilegeExtendMapper.selectById(id);
+    public List<PrivilegeExtend> findWithRoleById(Long id) {
+        return privilegeExtendMapper.selectWithRoleById(id);
     }
 
 

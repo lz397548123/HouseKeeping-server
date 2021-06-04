@@ -1,6 +1,7 @@
 package com.zzuli.housekeepingserver.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Role implements Serializable {
     private Long id;
@@ -8,6 +9,10 @@ public class Role implements Serializable {
     private String name;
 
     private static final long serialVersionUID = 1L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Long getId() {
         return id;
