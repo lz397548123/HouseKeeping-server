@@ -86,7 +86,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from base_privilege
     where id = #{id,jdbcType=BIGINT}
@@ -102,11 +102,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.zzuli.housekeepingserver.bean.Privilege">
-    insert into base_privilege (id, name, path, 
-      type, icon, hidden, 
+    insert into base_privilege (id, name, path,
+      type, icon, hidden,
       parent_id)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
-      #{type,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{hidden,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR},
+      #{type,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{hidden,jdbcType=INTEGER},
       #{parentId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.zzuli.housekeepingserver.bean.Privilege">

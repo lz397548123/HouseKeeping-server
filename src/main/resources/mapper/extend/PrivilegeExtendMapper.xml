@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzuli.housekeepingserver.dao.extend.PrivilegeExtendMapper">
+    <select id="selectAllWithChild" resultMap="PrivilegeExtendResultMap">
+        SELECT *
+        FROM base_privilege
+        WHERE parent_id IS NULL
+    </select>
+
+    <select id="selectByParentId" resultMap="PrivilegeExtendResultMap">
+        SELECT *
+        FROM base_privilege
+        WHERE parent_id = #{id}
+    </select>
+
+    <resultMap id="PrivilegeExtendResultMap" type="com.zzuli.housekeepingserver.bean.extend.PrivilegeExtend"
+               extends="com.zzuli.housekeepingserver.dao.PrivilegeMapper.BaseResultMap">
+        <collection property="children" ofType="com.zzuli.housekeepingserver.bean.Privilege"
+                    column="id" select="selectByParentId"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="RoleInPrivilegeResultMap">
+        SELECT p.id            as p_id,
+               p.name          as p_name,
+               p.path,
+               p.type,
+               p.icon,
+               p.hidden,
+               p.parent_id,
+               r.id            as r_id,
+               r.name          as r_name,
+               rp.id           as rp_id,
+               rp.role_id      as rp_role_id,
+               rp.privilege_id as rp_privilege_id
+        FROM base_privilege p
+                     LEFT JOIN base_role_privilege rp ON p.id = rp.privilege_id
+                     LEFT JOIN base_role r ON rp.role_id = r.id
+        WHERE p.id = #{id}
+    </select>
+
+    <resultMap id="RoleInPrivilegeResultMap" type="com.zzuli.housekeepingserver.bean.extend.PrivilegeExtend"
+               extends="com.zzuli.housekeepingserver.dao.PrivilegeMapper.BaseResultMap">
+        <id column="p_id" jdbcType="BIGINT" property="id"/>
+        <result column="p_name" jdbcType="VARCHAR" property="name"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="hidden" jdbcType="BIGINT" property="hidden"/>
+        <collection property="role" column="r_id" select="com.zzuli.housekeepingserver.dao.RoleMapper.selectByPrimaryKey"/>
+    </resultMap>
+</mapper>

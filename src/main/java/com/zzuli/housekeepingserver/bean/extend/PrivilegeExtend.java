@@ -1,6 +1,8 @@
 package com.zzuli.housekeepingserver.bean.extend;
 
 import com.zzuli.housekeepingserver.bean.Privilege;
+import com.zzuli.housekeepingserver.bean.Role;
+import com.zzuli.housekeepingserver.bean.RolePrivilege;
 
 import java.util.List;
 
@@ -13,7 +15,27 @@ import java.util.List;
  */
 
 public class PrivilegeExtend extends Privilege {
+    public static final String TYPE_MANAGE = "管理";
+    public static final String TYPE_BROWSE = "浏览";
+    public static final String TYPE_GN = "功能";
+    public static final String NAME_ZSGC = "增删改查";
+    public static final String NAME_LOOK = "访问";
+    public static final String NAME_LOGIN = "登录";
+    public static final String NAME_PAY = "支付";
+    public static final String NAME_COMMENT = "评论";
+
     private List<Privilege> children;
+
+
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public List<Privilege> getChildren() {
         return children;

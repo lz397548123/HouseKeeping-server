@@ -1,5 +1,9 @@
 package com.zzuli.housekeepingserver.dao.extend;
 
+import com.zzuli.housekeepingserver.bean.extend.PrivilegeExtend;
+
+import java.util.List;
+
 /**
  * 类说明：
  * Modify Information:
@@ -9,4 +13,6 @@ package com.zzuli.housekeepingserver.dao.extend;
  */
 
 public interface PrivilegeExtendMapper {
+    List<PrivilegeExtend> selectAllWithChild();
+    List<PrivilegeExtend> selectById(Long id);
 }

@@ -29,6 +29,11 @@ public class OrderController {
     @Autowired
     private OrderServiceImpl orderService;
 
+    /**
+     * 提交订单
+     * @param orderVM 订单视图
+     * @return Message
+     */
     @PostMapping("/commit")
     @ApiOperation(value = "commit（提交订单）")
     public Message commit(@RequestBody OrderVM orderVM) {
