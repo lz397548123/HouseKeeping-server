@@ -1,6 +1,5 @@
 package com.zzuli.housekeepingserver.web.controller;
 
-import com.zzuli.housekeepingserver.bean.Comment;
 import com.zzuli.housekeepingserver.bean.Privilege;
 import com.zzuli.housekeepingserver.service.impl.PrivilegeServiceImpl;
 import com.zzuli.housekeepingserver.utils.Message;

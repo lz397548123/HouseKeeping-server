@@ -2,7 +2,9 @@ package com.zzuli.housekeepingserver.dao;
 
 import com.zzuli.housekeepingserver.bean.User;
 import com.zzuli.housekeepingserver.bean.UserExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {

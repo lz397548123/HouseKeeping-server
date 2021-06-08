@@ -1,7 +1,6 @@
 package com.zzuli.housekeepingserver.web.controller;
 
 import com.zzuli.housekeepingserver.bean.Address;
-import com.zzuli.housekeepingserver.bean.Category;
 import com.zzuli.housekeepingserver.service.impl.AddressServiceImpl;
 import com.zzuli.housekeepingserver.utils.Message;
 import com.zzuli.housekeepingserver.utils.MessageUtil;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * 类说明：

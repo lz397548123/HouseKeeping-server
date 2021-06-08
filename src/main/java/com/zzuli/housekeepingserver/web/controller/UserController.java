@@ -1,7 +1,6 @@
 package com.zzuli.housekeepingserver.web.controller;
 
 import com.zzuli.housekeepingserver.bean.User;
-import com.zzuli.housekeepingserver.bean.extend.UserExtend;
 import com.zzuli.housekeepingserver.service.impl.UserServiceImpl;
 import com.zzuli.housekeepingserver.utils.Message;
 import com.zzuli.housekeepingserver.utils.MessageUtil;
@@ -11,8 +10,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * 类说明：
@@ -31,6 +28,7 @@ public class UserController {
 
     /**
      * 查询所有用户，并且级联获得用户角色
+     *
      * @return Message
      */
     @ApiOperation(value = "findAllWithRole（查询所有用户，并且级联获得用户角色）")

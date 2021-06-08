@@ -1,7 +1,6 @@
 package com.zzuli.housekeepingserver.bean;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Role implements Serializable {
     private Long id;

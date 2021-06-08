@@ -1,7 +1,6 @@
 package com.zzuli.housekeepingserver.service.impl;
 
 import com.zzuli.housekeepingserver.bean.Role;
-import com.zzuli.housekeepingserver.bean.RoleExample;
 import com.zzuli.housekeepingserver.bean.extend.RoleExtend;
 import com.zzuli.housekeepingserver.dao.PrivilegeMapper;
 import com.zzuli.housekeepingserver.dao.RoleMapper;

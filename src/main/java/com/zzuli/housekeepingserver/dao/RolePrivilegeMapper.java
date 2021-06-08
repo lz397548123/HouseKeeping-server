@@ -2,7 +2,9 @@ package com.zzuli.housekeepingserver.dao;
 
 import com.zzuli.housekeepingserver.bean.RolePrivilege;
 import com.zzuli.housekeepingserver.bean.RolePrivilegeExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface RolePrivilegeMapper {

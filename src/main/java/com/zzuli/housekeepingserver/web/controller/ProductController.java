@@ -38,6 +38,7 @@ public class ProductController {
 
     /**
      * 查询所有产品，并且级联所属栏目
+     *
      * @return Message
      */
     @ApiOperation(value = "findAllWithCategory（查询所有产品，并且级联所属栏目）")

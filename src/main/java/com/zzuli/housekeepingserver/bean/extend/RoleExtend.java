@@ -1,6 +1,5 @@
 package com.zzuli.housekeepingserver.bean.extend;
 
-import com.zzuli.housekeepingserver.bean.Privilege;
 import com.zzuli.housekeepingserver.bean.Role;
 
 import java.util.List;

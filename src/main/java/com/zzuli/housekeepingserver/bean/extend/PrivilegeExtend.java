@@ -1,8 +1,6 @@
 package com.zzuli.housekeepingserver.bean.extend;
 
 import com.zzuli.housekeepingserver.bean.Privilege;
-import com.zzuli.housekeepingserver.bean.Role;
-import com.zzuli.housekeepingserver.bean.RolePrivilege;
 
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class PrivilegeExtend extends Privilege {
 
     List<Privilege> children;
 
-//    private Role role;
+    //    private Role role;
     List<RoleExtend> roles;
 
     public List<RoleExtend> getRoles() {

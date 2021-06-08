@@ -2,7 +2,9 @@ package com.zzuli.housekeepingserver.dao;
 
 import com.zzuli.housekeepingserver.bean.Privilege;
 import com.zzuli.housekeepingserver.bean.PrivilegeExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PrivilegeMapper {

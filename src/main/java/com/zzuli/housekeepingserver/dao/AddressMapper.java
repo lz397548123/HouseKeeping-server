@@ -2,7 +2,9 @@ package com.zzuli.housekeepingserver.dao;
 
 import com.zzuli.housekeepingserver.bean.Address;
 import com.zzuli.housekeepingserver.bean.AddressExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface AddressMapper {

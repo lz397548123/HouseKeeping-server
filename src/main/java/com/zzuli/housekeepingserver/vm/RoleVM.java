@@ -2,7 +2,6 @@ package com.zzuli.housekeepingserver.vm;
 
 import com.zzuli.housekeepingserver.bean.Order;
 import com.zzuli.housekeepingserver.bean.Privilege;
-import com.zzuli.housekeepingserver.bean.Role;
 
 import java.util.List;
 

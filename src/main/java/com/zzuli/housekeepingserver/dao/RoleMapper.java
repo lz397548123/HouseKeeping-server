@@ -2,7 +2,9 @@ package com.zzuli.housekeepingserver.dao;
 
 import com.zzuli.housekeepingserver.bean.Role;
 import com.zzuli.housekeepingserver.bean.RoleExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface RoleMapper {

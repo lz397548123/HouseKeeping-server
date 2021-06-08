@@ -1,7 +1,6 @@
 package com.zzuli.housekeepingserver.web.controller;
 
 import com.zzuli.housekeepingserver.bean.Category;
-import com.zzuli.housekeepingserver.bean.extend.CategoryExtend;
 import com.zzuli.housekeepingserver.service.impl.CategoryServiceImpl;
 import com.zzuli.housekeepingserver.utils.Message;
 import com.zzuli.housekeepingserver.utils.MessageUtil;
@@ -11,8 +10,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * 类说明：
@@ -37,6 +34,7 @@ public class CategoryController {
 
     /**
      * 查询所有栏目，并且级联所属子栏目
+     *
      * @return Message
      */
     @ApiOperation(value = "findAllWithChild（查询所有栏目，并且级联所属子栏目）")

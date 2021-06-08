@@ -2,7 +2,6 @@ package com.zzuli.housekeepingserver.service.impl;
 
 import com.zzuli.housekeepingserver.bean.Address;
 import com.zzuli.housekeepingserver.bean.AddressExample;
-import com.zzuli.housekeepingserver.bean.Category;
 import com.zzuli.housekeepingserver.dao.AddressMapper;
 import com.zzuli.housekeepingserver.service.AddressService;
 import com.zzuli.housekeepingserver.utils.CustomerException;

@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/4       评论控制器
+ * liang         2021/6/4       评价控制器
  */
 
 @RestController
 @RequestMapping("/comment")
-@Api(description = "评论管理接口")
+@Api(description = "评价管理接口")
 public class CommentController {
     @Autowired
     private CommentServiceImpl commentService;
@@ -33,10 +33,11 @@ public class CommentController {
     }
 
     /**
-     * 查询所有评论，并且级联所属子评论
+     * 查询所有评价，并且级联所属子评论
+     *
      * @return Message
      */
-    @ApiOperation(value = "findAllWithChild（查询所有评论，并且级联所属子评论）")
+    @ApiOperation(value = "findAllWithChild（查询所有评价，并且级联所属子评论）")
     @GetMapping("/findAllWithChild")
     public Message findAllWithChild() {
         return MessageUtil.success("success", commentService.findAllWithChild());
@@ -49,7 +50,7 @@ public class CommentController {
         return MessageUtil.success("保存或更新成功");
     }
 
-    @ApiOperation(value = "deleteById（通过ID删除评论信息）")
+    @ApiOperation(value = "deleteById（通过ID删除评价信息）")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
     })

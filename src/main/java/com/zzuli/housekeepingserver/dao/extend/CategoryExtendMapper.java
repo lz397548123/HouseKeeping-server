@@ -1,6 +1,5 @@
 package com.zzuli.housekeepingserver.dao.extend;
 
-import com.zzuli.housekeepingserver.bean.Category;
 import com.zzuli.housekeepingserver.bean.extend.CategoryExtend;
 
 import java.util.List;
