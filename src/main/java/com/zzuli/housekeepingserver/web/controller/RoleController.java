@@ -37,10 +37,10 @@ public class RoleController {
      * @param id 编号
      * @return Message
      */
-    @ApiOperation(value = "findById（通过ID查找角色信息带权限）")
-    @PostMapping("/findById")
-    public Message findById(Long id) {
-        return MessageUtil.success("success", roleService.findById(id));
+    @ApiOperation(value = "findWithPrivilegeById（通过ID查找角色信息带权限）")
+    @PostMapping("/findWithPrivilegeById")
+    public Message findWithPrivilegeById(Long id) {
+        return MessageUtil.success("success", roleService.findWithPrivilegeById(id));
     }
 
     @ApiOperation(value = "deleteById（通过ID删除角色信息）")

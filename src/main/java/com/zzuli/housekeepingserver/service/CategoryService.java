@@ -22,6 +22,4 @@ public interface CategoryService {
     void deleteById(Long id) throws CustomerException;
 
     List<CategoryExtend> findAllWithChild();
-
-
 }

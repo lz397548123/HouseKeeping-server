@@ -2,9 +2,11 @@ package com.zzuli.housekeepingserver.service.impl;
 
 import com.zzuli.housekeepingserver.bean.Role;
 import com.zzuli.housekeepingserver.bean.RoleExample;
+import com.zzuli.housekeepingserver.bean.extend.RoleExtend;
 import com.zzuli.housekeepingserver.dao.PrivilegeMapper;
 import com.zzuli.housekeepingserver.dao.RoleMapper;
 import com.zzuli.housekeepingserver.dao.RolePrivilegeMapper;
+import com.zzuli.housekeepingserver.dao.extend.RoleExtendMapper;
 import com.zzuli.housekeepingserver.service.RoleService;
 import com.zzuli.housekeepingserver.utils.CustomerException;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,8 @@ public class RoleServiceImpl implements RoleService {
     private RolePrivilegeMapper rolePrivilegeMapper;
     @Resource
     private PrivilegeMapper privilegeMapper;
+    @Resource
+    private RoleExtendMapper roleExtendMapper;
 
     /**
      * 查询角色带权限
@@ -37,21 +41,22 @@ public class RoleServiceImpl implements RoleService {
      */
     @Override
     public List<Role> findAll() {
-        List<Role> roleList = roleMapper.selectByExample(new RoleExample());
-        for (Role role : roleList) {
-            role = roleMapper.findRoleWithPrivilege(role.getId());
-        }
-        return roleList;
+//        List<Role> roleList = roleMapper.selectByExample(new RoleExample());
+//        for (Role role : roleList) {
+//            role = roleMapper.findRoleWithPrivilege(role.getId());
+//        }
+//        return roleList;
+        return null;
     }
 
     /**
      * 查询角色带权限
      * @param id 编号
-     * @return Role
+     * @return List<RoleExtend>
      */
     @Override
-    public Role findById(Long id) {
-        return roleMapper.findRoleWithPrivilege(id);
+    public List<RoleExtend> findWithPrivilegeById(Long id) {
+        return roleExtendMapper.selectWithPrivilegeById(id);
     }
 
     @Override

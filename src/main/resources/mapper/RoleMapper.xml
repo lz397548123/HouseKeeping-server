@@ -169,40 +169,4 @@
         set name = #{name,jdbcType=VARCHAR}
         where id = #{id,jdbcType=BIGINT}
     </update>
-
-    <select id="findRoleWithPrivilege" parameterType="java.lang.Long" resultMap="PrivilegeInRoleResultMap">
-        SELECT
-        r.id as r_id,
-        r.name as r_name,
-        p.id as p_id,
-        p.name as p_name,
-        p.path,
-        p.type,
-        p.icon,
-        p.hidden,
-        p.parent_id
-        FROM base_privilege p,
-             base_role r,
-             base_role_privilege rp
-        WHERE p.id = rp.privilege_id
-          AND r.id = rp.role_id
-          AND r.id = #{id}
-    </select>
-
-    <resultMap id="BaseResultMap2" type="com.zzuli.housekeepingserver.bean.Role">
-        <id column="r_id" jdbcType="BIGINT" property="id"/>
-        <result column="r_name" jdbcType="VARCHAR" property="name"/>
-    </resultMap>
-
-    <resultMap id="PrivilegeInRoleResultMap" type="com.zzuli.housekeepingserver.vm.RoleVM" extends="BaseResultMap2">
-        <collection property="privileges" ofType="com.zzuli.housekeepingserver.bean.Privilege">
-            <id column="p_id" jdbcType="BIGINT" property="id"/>
-            <result column="p_name" jdbcType="VARCHAR" property="name"/>
-            <result column="path" jdbcType="VARCHAR" property="path"/>
-            <result column="type" jdbcType="VARCHAR" property="type"/>
-            <result column="icon" jdbcType="VARCHAR" property="icon"/>
-            <result column="hidden" jdbcType="BIGINT" property="hidden"/>
-            <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
-        </collection>
-    </resultMap>
 </mapper>

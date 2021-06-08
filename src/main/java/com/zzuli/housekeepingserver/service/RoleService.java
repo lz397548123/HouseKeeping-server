@@ -1,6 +1,7 @@
 package com.zzuli.housekeepingserver.service;
 
 import com.zzuli.housekeepingserver.bean.Role;
+import com.zzuli.housekeepingserver.bean.extend.RoleExtend;
 import com.zzuli.housekeepingserver.utils.CustomerException;
 
 import java.util.List;
@@ -14,11 +15,11 @@ import java.util.List;
  */
 
 public interface RoleService {
-    public List<Role> findAll();
+    List<Role> findAll();
 
-    public Role findById(Long id);
+    List<RoleExtend> findWithPrivilegeById(Long id);
 
-    public void deleteById(Long id) throws CustomerException ;
+    void deleteById(Long id) throws CustomerException ;
 
-    public void saveOrUpdate(Role role) throws CustomerException ;
+    void saveOrUpdate(Role role) throws CustomerException ;
 }
