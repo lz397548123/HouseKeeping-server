@@ -21,5 +21,7 @@ public interface ProductService {
 
     void deleteById(Long id) throws CustomerException;
 
+    Product findProductById(Long id);
+
     List<ProductExtend> findAllWithCategory();
 }

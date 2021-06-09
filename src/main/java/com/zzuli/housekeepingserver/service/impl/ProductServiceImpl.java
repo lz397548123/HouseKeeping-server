@@ -55,6 +55,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product findProductById(Long id) {
+        return productMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public List<ProductExtend> findAllWithCategory() {
         return productExtendMapper.selectAllWithCategory();
     }

@@ -29,7 +29,7 @@ public class PrivilegeController {
     @ApiOperation(value = "findAll（查询所有）")
     @GetMapping("/findAll")
     public Message findAll() {
-        return MessageUtil.success("success", privilegeService.findAll());
+        return MessageUtil.success("（查询所有）success", privilegeService.findAll());
     }
 
     /**
@@ -40,7 +40,7 @@ public class PrivilegeController {
     @ApiOperation(value = "findAllWithChild（查询所有权限，并且级联所属子权限）")
     @GetMapping("/findAllWithChild")
     public Message findAllWithChild() {
-        return MessageUtil.success("success", privilegeService.findAllWithChild());
+        return MessageUtil.success("（查询所有权限，并且级联所属子权限）success", privilegeService.findAllWithChild());
     }
 
     /**
@@ -54,23 +54,23 @@ public class PrivilegeController {
     })
     @GetMapping("/findWithRoleById")
     public Message findWithRoleById(Long id) {
-        return MessageUtil.success("success", privilegeService.findWithRoleById(id));
+        return MessageUtil.success("（查询权限，并且级联相关角色）success", privilegeService.findWithRoleById(id));
     }
 
     @ApiOperation(value = "saveOrUpdate（保存或更新信息）")
     @PostMapping("/saveOrUpdate")
     public Message saveOrUpdate(@RequestBody Privilege privilege) {
         privilegeService.saveOrUpdate(privilege);
-        return MessageUtil.success("保存或更新成功");
+        return MessageUtil.success("保存或更新信息或更新成功");
     }
 
     @ApiOperation(value = "deleteById（通过ID删除权限信息）")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
     })
-    @PostMapping("/deleteById")
+    @GetMapping("/deleteById")
     public Message deleteById(Long id) {
         privilegeService.deleteById(id);
-        return MessageUtil.success("删除成功");
+        return MessageUtil.success("通过ID删除权限信息成功");
     }
 }

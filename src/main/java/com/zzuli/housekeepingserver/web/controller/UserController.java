@@ -37,6 +37,17 @@ public class UserController {
         return MessageUtil.success("success", userService.findAllWithRole());
     }
 
+    /**
+     * 查询所有角色为员工的用户
+     *
+     * @return Message
+     */
+    @ApiOperation(value = "findAllWithEmployee（查询所有角色为员工的用户）")
+    @GetMapping("/findAllWithEmployee")
+    public Message findAllWithEmployee() {
+        return MessageUtil.success("success", userService.findAllWithEmployee());
+    }
+
     @ApiOperation(value = "findAll（查询所有）")
     @GetMapping("/findAll")
     public Message findAll() {

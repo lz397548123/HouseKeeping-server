@@ -7,10 +7,15 @@
         FROM base_user;
     </select>
 
+    <select id="selectAllWithEmployee" resultMap="UserExtendResultMap">
+        SELECT *
+        FROM base_user
+        WHERE role_id = 3
+    </select>
+
     <resultMap id="UserExtendResultMap"
                type="com.zzuli.housekeepingserver.bean.extend.UserExtend"
                extends="com.zzuli.housekeepingserver.dao.UserMapper.BaseResultMap">
         <association property="role" column="role_id" select="com.zzuli.housekeepingserver.dao.RoleMapper.selectByPrimaryKey"/>
     </resultMap>
-
 </mapper>

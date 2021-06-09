@@ -26,12 +26,6 @@ public class RoleController {
     @Autowired
     private RoleServiceImpl roleService;
 
-    @ApiOperation(value = "findAll（查询所有角色带权限）")
-    @GetMapping("/findAll")
-    public Message findAll() {
-        return MessageUtil.success("success", roleService.findAll());
-    }
-
     /**
      * 查询角色带权限
      *
@@ -41,7 +35,13 @@ public class RoleController {
     @ApiOperation(value = "findWithPrivilegeById（通过ID查找角色信息带权限）")
     @PostMapping("/findWithPrivilegeById")
     public Message findWithPrivilegeById(Long id) {
-        return MessageUtil.success("success", roleService.findWithPrivilegeById(id));
+        return MessageUtil.success("通过ID查找角色信息带权success", roleService.findWithPrivilegeById(id));
+    }
+
+    @ApiOperation(value = "findById（通过ID查找角色信息，结果唯一）")
+    @PostMapping("/findById")
+    public Message findById(Long id) {
+        return MessageUtil.success("根据id查找角色success", roleService.findById(id));
     }
 
     @ApiOperation(value = "deleteById（通过ID删除角色信息）")
@@ -51,13 +51,13 @@ public class RoleController {
     @GetMapping("/deleteById")
     public Message deleteById(Long id) {
         roleService.deleteById(id);
-        return MessageUtil.success("删除成功");
+        return MessageUtil.success("通过ID删除角色信息成功");
     }
 
     @ApiOperation(value = "saveOrUpdate（保存或更新角色信息）")
     @PostMapping("/saveOrUpdate")
     public Message saveOrUpdate(@RequestBody Role role) {
         roleService.saveOrUpdate(role);
-        return MessageUtil.success("保存或更新成功");
+        return MessageUtil.success("保存或更新角色信息成功");
     }
 }

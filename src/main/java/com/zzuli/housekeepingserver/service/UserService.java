@@ -14,7 +14,7 @@ import java.util.List;
  * liang         2021/6/3       用户业务接口
  */
 
-public interface UserService {
+public interface  UserService {
     List<User> findAll();
 
     void saveOrUpdate(User user) throws CustomerException;
@@ -22,4 +22,6 @@ public interface UserService {
     void deleteById(Long id) throws CustomerException;
 
     List<UserExtend> findAllWithRole();
+
+    List<UserExtend> findAllWithEmployee();
 }

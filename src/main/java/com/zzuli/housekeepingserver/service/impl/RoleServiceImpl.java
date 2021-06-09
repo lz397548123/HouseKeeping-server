@@ -26,36 +26,31 @@ public class RoleServiceImpl implements RoleService {
 
     @Resource
     private RoleMapper roleMapper;
-    @Resource
-    private RolePrivilegeMapper rolePrivilegeMapper;
-    @Resource
-    private PrivilegeMapper privilegeMapper;
+
     @Resource
     private RoleExtendMapper roleExtendMapper;
+
 
     /**
      * 查询角色带权限
      *
-     * @return List<Role>
-     */
-    @Override
-    public List<Role> findAll() {
-//        List<Role> roleList = roleMapper.selectByExample(new RoleExample());
-//        for (Role role : roleList) {
-//            role = roleMapper.findRoleWithPrivilege(role.getId());
-//        }
-//        return roleList;
-        return null;
-    }
-
-    /**
-     * 查询角色带权限
      * @param id 编号
      * @return List<RoleExtend>
      */
     @Override
     public List<RoleExtend> findWithPrivilegeById(Long id) {
         return roleExtendMapper.selectWithPrivilegeById(id);
+    }
+
+    /**
+     * 根据编号ID查找角色，一个id只有一种类型的编号
+     *
+     * @param id 编号
+     * @return Role
+     */
+    @Override
+    public Role findById(Long id) {
+        return roleMapper.selectByPrimaryKey(id);
     }
 
     @Override

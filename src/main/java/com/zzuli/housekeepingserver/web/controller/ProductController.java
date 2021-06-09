@@ -33,7 +33,7 @@ public class ProductController {
     @ApiOperation(value = "findAll（查询所有）")
     @GetMapping("/findAll")
     public Message findAll() {
-        return MessageUtil.success("success", productService.findAll());
+        return MessageUtil.success("findAll（查询所有）success", productService.findAll());
     }
 
     /**
@@ -44,14 +44,14 @@ public class ProductController {
     @ApiOperation(value = "findAllWithCategory（查询所有产品，并且级联所属栏目）")
     @GetMapping("/findAllWithCategory")
     public Message findAllWithCategory() {
-        return MessageUtil.success("success", productService.findAllWithCategory());
+        return MessageUtil.success("查询所有产品，并且级联所属栏目success", productService.findAllWithCategory());
     }
 
     @ApiOperation(value = "saveOrUpdate（保存或更新信息）")
     @PostMapping("/saveOrUpdate")
     public Message saveOrUpdate(@RequestBody Product product) {
         productService.saveOrUpdate(product);
-        return MessageUtil.success("保存或更新成功");
+        return MessageUtil.success("保存或更新信息成功");
     }
 
     @ApiOperation(value = "deleteById（通过ID删除产品信息）")
@@ -61,7 +61,13 @@ public class ProductController {
     @GetMapping("/deleteById")
     public Message deleteById(Long id) {
         productService.deleteById(id);
-        return MessageUtil.success("删除成功");
+        return MessageUtil.success("通过ID删除产品信息成功");
+    }
+
+    @ApiOperation(value = "findProductById（通过ID查找产品信息（唯一））")
+    @GetMapping("/findProductById")
+    public Message findProductById(Long id) {
+        return MessageUtil.success("通过ID查找产品成功", productService.findProductById(id));
     }
 
 }

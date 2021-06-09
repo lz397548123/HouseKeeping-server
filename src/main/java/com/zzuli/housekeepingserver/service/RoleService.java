@@ -15,9 +15,9 @@ import java.util.List;
  */
 
 public interface RoleService {
-    List<Role> findAll();
-
     List<RoleExtend> findWithPrivilegeById(Long id);
+
+    Role findById(Long id);
 
     void deleteById(Long id) throws CustomerException ;
 

@@ -28,8 +28,9 @@ dependencies {
     // swagger3
 //    implementation 'io.springfox:springfox-boot-starter:3.0.0'
     // swagger api文档 2版本后续升级到3
-    implementation 'io.springfox:springfox-swagger2:2.6.1'
-    implementation 'io.springfox:springfox-swagger-ui:2.6.1'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    // 整合Knife4j: swagger2的皮肤
     // mysql驱动
     runtimeOnly 'mysql:mysql-connector-java'
     // mybatis
@@ -38,6 +39,8 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    implementation 'com.github.xiaoymin:knife4j-spring-boot-autoconfigure:2.0.2'
+    implementation 'com.github.xiaoymin:knife4j-spring-ui:2.0.2'
 }
 
 test {

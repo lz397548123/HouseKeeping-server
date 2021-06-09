@@ -59,4 +59,9 @@ public class UserServiceImpl implements UserService {
     public List<UserExtend> findAllWithRole() {
         return userExtendMapper.selectAllWithRole();
     }
+
+    @Override
+    public List<UserExtend> findAllWithEmployee() {
+        return userExtendMapper.selectAllWithEmployee();
+    }
 }

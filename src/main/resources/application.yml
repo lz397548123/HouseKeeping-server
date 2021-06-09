@@ -24,3 +24,12 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true  # 开启驼峰命名
   mapper-locations: classpath:/mapper/**/*.xml
+
+# swagger配置
+knife4j:
+  basic:
+    username: admin
+    password: 12345
+    enable: true  # 开启认证
+  production: false # 默认是false ,屏蔽所有Swagger的相关资源
+  enable: true # 是否开启swagger
