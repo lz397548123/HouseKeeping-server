@@ -17,6 +17,8 @@ import java.util.List;
 public interface PrivilegeService {
     List<Privilege> findAll();
 
+    Privilege findById(Long id);
+
     void saveOrUpdate(Privilege privilege) throws CustomerException;
 
     void deleteById(Long id) throws CustomerException;

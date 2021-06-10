@@ -13,8 +13,6 @@ import java.util.List;
  */
 
 public interface OrderExtendMapper {
-    OrderExtend selectById(Long id);
-
     // 多条件符合查询
     List<OrderExtend> query(Long id, String status);
 }

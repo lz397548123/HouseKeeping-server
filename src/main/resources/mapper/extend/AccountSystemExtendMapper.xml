@@ -8,13 +8,9 @@
 
     <resultMap id="AccountSystemExtendResultMap" type="com.zzuli.housekeepingserver.bean.extend.AccountSystemExtend"
                extends="com.zzuli.housekeepingserver.dao.AccountSystemMapper.BaseResultMap">
-        <association property="order"
-                     column="order_id"
-                     select="com.zzuli.housekeepingserver.dao.OrderMapper.selectByPrimaryKey"
-        />
-        <association property="user"
-                     column="user_id"
-                     select="com.zzuli.housekeepingserver.dao.UserMapper.selectByPrimaryKey"
-        />
+        <association property="order" column="order_id"
+                     select="com.zzuli.housekeepingserver.dao.OrderMapper.selectByPrimaryKey"/>
+        <association property="user" column="user_id"
+                     select="com.zzuli.housekeepingserver.dao.UserMapper.selectByPrimaryKey"/>
     </resultMap>
 </mapper>

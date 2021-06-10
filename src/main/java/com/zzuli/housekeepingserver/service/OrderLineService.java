@@ -1,6 +1,8 @@
 package com.zzuli.housekeepingserver.service;
 
 import com.zzuli.housekeepingserver.bean.OrderLine;
+import com.zzuli.housekeepingserver.bean.extend.OrderLineExtend;
+import com.zzuli.housekeepingserver.utils.CustomerException;
 
 import java.util.List;
 
@@ -13,7 +15,15 @@ import java.util.List;
  */
 
 public interface OrderLineService {
+    List<OrderLine> findAll();
+
     List<OrderLine> findByOrderId(Long id);
 
+    void saveOrUpdate(OrderLine orderLine)throws CustomerException;
+
+    void deleteById(long id) throws CustomerException;
+
     List<OrderLine> findByProductId(Long id);
+
+    List<OrderLineExtend> findAllAboutProduct();
 }

@@ -17,15 +17,13 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/4       权限业务的实现类
+ * liang         2021/6/4       权限业务实现类
  */
 
 @Service
 public class PrivilegeServiceImpl implements PrivilegeService {
-
     @Resource
     private PrivilegeMapper privilegeMapper;
-
     @Resource
     private PrivilegeExtendMapper privilegeExtendMapper;
 
@@ -35,11 +33,16 @@ public class PrivilegeServiceImpl implements PrivilegeService {
     }
 
     @Override
+    public Privilege findById(Long id) {
+        return privilegeMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public void saveOrUpdate(Privilege privilege) throws CustomerException {
-        if (privilege.getId() == null) {
-            privilegeMapper.insert(privilege);
-        } else {
+        if (privilege.getId() != null) {
             privilegeMapper.updateByPrimaryKey(privilege);
+        } else {
+            privilegeMapper.insert(privilege);
         }
     }
 

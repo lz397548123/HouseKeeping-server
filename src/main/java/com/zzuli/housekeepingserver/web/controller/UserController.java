@@ -1,7 +1,7 @@
 package com.zzuli.housekeepingserver.web.controller;
 
 import com.zzuli.housekeepingserver.bean.User;
-import com.zzuli.housekeepingserver.service.impl.UserServiceImpl;
+import com.zzuli.housekeepingserver.service.UserService;
 import com.zzuli.housekeepingserver.utils.Message;
 import com.zzuli.housekeepingserver.utils.MessageUtil;
 import io.swagger.annotations.Api;
@@ -24,44 +24,64 @@ import org.springframework.web.bind.annotation.*;
 @Api(description = "用户管理接口")
 public class UserController {
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
-    /**
-     * 查询所有用户，并且级联获得用户角色
-     *
-     * @return Message
-     */
-    @ApiOperation(value = "findAllWithRole（查询所有用户，并且级联获得用户角色）")
-    @GetMapping("/findAllWithRole")
-    public Message findAllWithRole() {
-        return MessageUtil.success("success", userService.findAllWithRole());
-    }
-
-    /**
-     * 查询所有角色为员工的用户
-     *
-     * @return Message
-     */
-    @ApiOperation(value = "findAllWithEmployee（查询所有角色为员工的用户）")
-    @GetMapping("/findAllWithEmployee")
-    public Message findAllWithEmployee() {
-        return MessageUtil.success("success", userService.findAllWithEmployee());
-    }
-
-    @ApiOperation(value = "findAll（查询所有）")
+    @ApiOperation(value = "查询所有用户权限")
     @GetMapping("/findAll")
     public Message findAll() {
         return MessageUtil.success("success", userService.findAll());
     }
 
-    @ApiOperation(value = "saveOrUpdate（保存或更新信息）")
+    @ApiOperation(value = "查询角色为员工的用户")
+    @GetMapping("/findAllEmployee")
+    public Message findAllEmployee() {
+        return MessageUtil.success(userService.findAllEmployee());
+    }
+
+    @ApiOperation(value = "审核员工")
+    @GetMapping("、auditing")
+    public Message auditing(Long id) {
+        User user = userService.findById(id);
+        user.setStatus("已通过");
+        userService.saveOrUpdate(user);
+        return MessageUtil.success("审核成功");
+    }
+
+    @GetMapping("/auditing1")
+    public Message auditing1(Long id) {
+        userService.deleteById(id);
+        return MessageUtil.success("审核成功");
+    }
+
+    @GetMapping("/refuseAuditing1")
+    public Message refuseAuditing1(Long id) {
+        userService.deleteById(id);
+        return MessageUtil.success("已拒绝审核");
+    }
+
+    @GetMapping("/refuseAuditing")
+    public Message refuseAuditing(Long id) {
+        User user = userService.findById(id);
+        user.setStatus("未通过");
+        userService.saveOrUpdate(user);
+        return MessageUtil.success("已拒绝审核");
+    }
+
+    @ApiOperation(value = "通过id查询用户权限")
+    @ApiImplicitParam(name = "id", value = "类别唯一编号", required = true, paramType = "query")
+    @GetMapping("/findById")
+    public Message findById(Long id) {
+        return MessageUtil.success("success", userService.findById(id));
+    }
+
+    @ApiOperation(value = "保存或更新用户信息")
     @PostMapping("/saveOrUpdate")
     public Message saveOrUpdate(@RequestBody User user) {
         userService.saveOrUpdate(user);
         return MessageUtil.success("保存或者更新成功");
     }
 
-    @ApiOperation(value = "deleteById（通过ID删除产品信息）")
+    @ApiOperation(value = "通过ID删除用户信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
     })
@@ -69,5 +89,12 @@ public class UserController {
     public Message deleteById(Long id) {
         userService.deleteById(id);
         return MessageUtil.success("删除成功");
+    }
+
+
+    @ApiOperation(value = "findAllWithRole（查询所有用户，并且级联获得用户角色）")
+    @GetMapping("/findAllWithRole")
+    public Message findAllWithRole() {
+        return MessageUtil.success("success", userService.findAllWithRole());
     }
 }

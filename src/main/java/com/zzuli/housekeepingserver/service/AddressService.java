@@ -1,6 +1,7 @@
 package com.zzuli.housekeepingserver.service;
 
 import com.zzuli.housekeepingserver.bean.Address;
+import com.zzuli.housekeepingserver.bean.extend.AddressExtend;
 import com.zzuli.housekeepingserver.utils.CustomerException;
 
 import java.util.List;
@@ -14,9 +15,15 @@ import java.util.List;
  */
 
 public interface AddressService {
-    void saveOrUpdate(Address address) throws CustomerException ;
+    List<Address> findAll();
+
+    Address findById(Long id);
+
+    List<Address> findByUserId(Long userId);
+
+    void saveOrUpdate(Address address) throws CustomerException;
 
     void deleteById(Long id) throws CustomerException;
 
-    List<Address> findAllWithUserId(Long id);
+    List<AddressExtend> findAllWithUser();
 }

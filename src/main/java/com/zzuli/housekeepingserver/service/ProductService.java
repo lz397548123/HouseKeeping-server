@@ -17,11 +17,11 @@ import java.util.List;
 public interface ProductService {
     List<Product> findAll();
 
+    Product findById(Long id);
+
     void saveOrUpdate(Product product) throws CustomerException;
 
     void deleteById(Long id) throws CustomerException;
-
-    Product findProductById(Long id);
 
     List<ProductExtend> findAllWithCategory();
 }

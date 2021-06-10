@@ -22,10 +22,8 @@ import java.util.List;
 
 @Service
 public class CommentServiceImpl implements CommentService {
-
     @Resource
     private CommentMapper commentMapper;
-
     @Resource
     private CommentExtendMapper commentExtendMapper;
 
@@ -35,15 +33,14 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void deleteById(Long id) throws CustomerException{
-        // 先判断该id对应的数据存在不？
-        Comment comment = commentMapper.selectByPrimaryKey(id);
-        if (comment == null) {
-            // 当不存在，报错！删除
-            throw new CustomerException("删除失败,要删除的数据不存在");
-        }
-        // 当存在，删除
-        commentMapper.deleteByPrimaryKey(id);
+    public List<CommentExtend> findAllWithChild() {
+        return commentExtendMapper.selectAllWithChild();
+    }
+
+
+    @Override
+    public Comment selectById(Long id) {
+        return commentMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -56,7 +53,28 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentExtend> findAllWithChild() {
-        return commentExtendMapper.selectAllWithChild();
+    public void commit(Comment comment) throws CustomerException {
+        if (comment.getId() == null) {
+            commentMapper.insert(comment);
+        } else {
+            Comment commentT = commentMapper.selectByPrimaryKey(comment.getId());
+            if (commentT == null) {
+                throw new CustomerException("修改失败，数据不存在");
+            }
+            commentMapper.updateByPrimaryKey(comment);
+
+        }
+    }
+
+    @Override
+    public void deleteById(Long id) throws CustomerException {
+        // 先判断该id对应的数据存在不？
+        Comment comment = commentMapper.selectByPrimaryKey(id);
+        if (comment == null) {
+            // 当不存在，报错！删除
+            throw new CustomerException("删除失败,要删除的数据不存在");
+        }
+        // 当存在，删除
+        commentMapper.deleteByPrimaryKey(id);
     }
 }

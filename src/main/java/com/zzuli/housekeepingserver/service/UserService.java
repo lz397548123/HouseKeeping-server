@@ -14,14 +14,16 @@ import java.util.List;
  * liang         2021/6/3       用户业务接口
  */
 
-public interface  UserService {
+public interface UserService {
     List<User> findAll();
+
+    List<UserExtend> findAllEmployee();
+
+    User findById(Long id);
 
     void saveOrUpdate(User user) throws CustomerException;
 
     void deleteById(Long id) throws CustomerException;
 
     List<UserExtend> findAllWithRole();
-
-    List<UserExtend> findAllWithEmployee();
 }

@@ -17,6 +17,8 @@ import java.util.List;
 public interface CategoryService {
     List<Category> findAll();
 
+    Category findById(Long id);
+
     void saveOrUpdate(Category category) throws CustomerException;
 
     void deleteById(Long id) throws CustomerException;

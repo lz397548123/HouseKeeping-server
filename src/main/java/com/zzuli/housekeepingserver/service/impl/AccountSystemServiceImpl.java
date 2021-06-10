@@ -2,7 +2,9 @@ package com.zzuli.housekeepingserver.service.impl;
 
 import com.zzuli.housekeepingserver.bean.AccountSystem;
 import com.zzuli.housekeepingserver.bean.AccountSystemExample;
+import com.zzuli.housekeepingserver.bean.extend.AccountSystemExtend;
 import com.zzuli.housekeepingserver.dao.AccountSystemMapper;
+import com.zzuli.housekeepingserver.dao.extend.AccountSystemExtendMapper;
 import com.zzuli.housekeepingserver.service.AccountSystemService;
 import com.zzuli.housekeepingserver.utils.CustomerException;
 import org.springframework.stereotype.Service;
@@ -15,18 +17,36 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/4       系统账户管理业务实现类
+ * liang         2021/6/4       用户系统业务实现类
  */
 
 @Service
 public class AccountSystemServiceImpl implements AccountSystemService {
-
     @Resource
     private AccountSystemMapper accountSystemMapper;
+    @Resource
+    private AccountSystemExtendMapper accountSystemExtendMapper;
 
     @Override
     public List<AccountSystem> findAll() {
         return accountSystemMapper.selectByExample(new AccountSystemExample());
+    }
+
+    @Override
+    public AccountSystem findById(Long id) {
+        return accountSystemMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void saveOrUpdate(AccountSystem accountSystem) throws CustomerException {
+        if (accountSystem.getId() == null) {
+            accountSystemMapper.insert(accountSystem);
+        } else {
+            if (accountSystemMapper.selectByPrimaryKey(accountSystem.getId()) == null) {
+                throw new CustomerException("修改失败，数据不存在");
+            }
+            accountSystemMapper.updateByPrimaryKey(accountSystem);
+        }
     }
 
     @Override
@@ -42,11 +62,7 @@ public class AccountSystemServiceImpl implements AccountSystemService {
     }
 
     @Override
-    public void saveOrUpdate(AccountSystem accountSystem) throws CustomerException {
-        if (accountSystem.getId() != null) {
-            accountSystemMapper.updateByPrimaryKey(accountSystem);
-        } else {
-            accountSystemMapper.insert(accountSystem);
-        }
+    public List<AccountSystemExtend> findAllWithOrderAndUser() {
+        return accountSystemExtendMapper.selectAllWithOrderAndUser();
     }
 }

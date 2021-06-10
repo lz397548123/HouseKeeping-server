@@ -6,12 +6,9 @@
         FROM jz_address
     </select>
 
-    <resultMap id="AddressExtendResultMap"
-               type="com.zzuli.housekeepingserver.bean.extend.AddressExtend"
+    <resultMap id="AddressExtendResultMap" type="com.zzuli.housekeepingserver.bean.extend.AddressExtend"
                extends="com.zzuli.housekeepingserver.dao.AddressMapper.BaseResultMap">
-
-        <association property="userId"
-                     column="user_id"
+        <association property="userId" column="user_id"
                      select="com.zzuli.housekeepingserver.dao.UserMapper.selectByPrimaryKey">
         </association>
     </resultMap>

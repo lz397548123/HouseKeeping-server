@@ -17,11 +17,11 @@ import java.util.List;
 public interface AccountCustomerService {
     List<AccountCustomer> findAll();
 
-    List<AccountCustomerExtend> findAllWithOrderAndUser();
-
     AccountCustomer findById(Long id);
+
+    void saveOrUpdate(AccountCustomer accountCustomer) throws CustomerException;
 
     void deleteById(Long id) throws CustomerException;
 
-    void saveOrUpdate(AccountCustomer accountCustomer) throws CustomerException;
+    List<AccountCustomerExtend> findAllWithOrderAndUser();
 }

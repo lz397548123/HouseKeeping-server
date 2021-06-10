@@ -149,8 +149,8 @@
     </update>
     <update id="updateByExample" parameterType="map">
         update base_role
-        set id   = #{record.id,jdbcType=BIGINT},
-            name = #{record.name,jdbcType=VARCHAR}
+        set id = #{record.id,jdbcType=BIGINT},
+        name = #{record.name,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>

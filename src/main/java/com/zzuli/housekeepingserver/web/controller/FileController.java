@@ -30,12 +30,13 @@ import java.io.FileOutputStream;
 public class FileController {
     /**
      * 文件上传
+     *
      * @param file
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/upload",method = RequestMethod.POST,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String fileUpload(@RequestParam("file") MultipartFile file) throws Exception{
+    @RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String fileUpload(@RequestParam("file") MultipartFile file) throws Exception {
         File file1 = new File("d:/" + file.getOriginalFilename());
         file1.createNewFile();
         FileOutputStream fileOutputStream = new FileOutputStream(file1);

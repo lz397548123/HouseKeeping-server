@@ -22,16 +22,19 @@ import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-
     @Resource
     private CategoryMapper categoryMapper;
-
     @Resource
     private CategoryExtendMapper categoryExtendMapper;
 
     @Override
     public List<Category> findAll() {
         return categoryMapper.selectByExample(new CategoryExample());
+    }
+
+    @Override
+    public Category findById(Long id) {
+        return categoryMapper.selectByPrimaryKey(id);
     }
 
     @Override

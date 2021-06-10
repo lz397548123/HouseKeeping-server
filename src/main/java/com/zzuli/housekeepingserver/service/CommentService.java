@@ -17,9 +17,13 @@ import java.util.List;
 public interface CommentService {
     List<Comment> findAll();
 
-    void deleteById(Long id) throws CustomerException;
+    List<CommentExtend> findAllWithChild();
+
+    Comment selectById(Long id);
 
     void saveOrUpdate(Comment comment) throws CustomerException;
 
-    List<CommentExtend> findAllWithChild();
+    void commit(Comment comment)throws CustomerException;
+
+    void deleteById(Long id) throws CustomerException;
 }

@@ -1,7 +1,7 @@
 package com.zzuli.housekeepingserver.web.controller;
 
 import com.zzuli.housekeepingserver.bean.Privilege;
-import com.zzuli.housekeepingserver.service.impl.PrivilegeServiceImpl;
+import com.zzuli.housekeepingserver.service.PrivilegeService;
 import com.zzuli.housekeepingserver.utils.Message;
 import com.zzuli.housekeepingserver.utils.MessageUtil;
 import io.swagger.annotations.Api;
@@ -24,47 +24,29 @@ import org.springframework.web.bind.annotation.*;
 @Api(description = "权限管理接口")
 public class PrivilegeController {
     @Autowired
-    private PrivilegeServiceImpl privilegeService;
+    private PrivilegeService privilegeService;
 
-    @ApiOperation(value = "findAll（查询所有）")
+    @ApiOperation(value = "查询全部权限信息")
     @GetMapping("/findAll")
     public Message findAll() {
         return MessageUtil.success("（查询所有）success", privilegeService.findAll());
     }
 
-    /**
-     * 查询所有权限，并且级联所属子权限
-     *
-     * @return Message
-     */
-    @ApiOperation(value = "findAllWithChild（查询所有权限，并且级联所属子权限）")
-    @GetMapping("/findAllWithChild")
-    public Message findAllWithChild() {
-        return MessageUtil.success("（查询所有权限，并且级联所属子权限）success", privilegeService.findAllWithChild());
+    @ApiOperation(value = "通过id查询权限信息")
+    @ApiImplicitParam(name = "id", value = "类别唯一编号", required = true, paramType = "query")
+    @GetMapping("/findById")
+    public Message findById(Long id) {
+        return MessageUtil.success("success", privilegeService.findById(id));
     }
 
-    /**
-     * 查询权限，并且级联相关角色
-     *
-     * @return Message
-     */
-    @ApiOperation(value = "findWithRoleById（查询权限，并且级联相关角色）")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
-    })
-    @GetMapping("/findWithRoleById")
-    public Message findWithRoleById(Long id) {
-        return MessageUtil.success("（查询权限，并且级联相关角色）success", privilegeService.findWithRoleById(id));
-    }
-
-    @ApiOperation(value = "saveOrUpdate（保存或更新信息）")
+    @ApiOperation(value = "保存或通过id更新权限信息")
     @PostMapping("/saveOrUpdate")
     public Message saveOrUpdate(@RequestBody Privilege privilege) {
         privilegeService.saveOrUpdate(privilege);
-        return MessageUtil.success("保存或更新信息或更新成功");
+        return MessageUtil.success("保存或更新信息成功");
     }
 
-    @ApiOperation(value = "deleteById（通过ID删除权限信息）")
+    @ApiOperation(value = "通过id删除权限信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
     })
@@ -73,4 +55,20 @@ public class PrivilegeController {
         privilegeService.deleteById(id);
         return MessageUtil.success("通过ID删除权限信息成功");
     }
+
+    @ApiOperation(value = "查询权限树")
+    @GetMapping("/findAllWithChild")
+    public Message findAllWithChild() {
+        return MessageUtil.success("（查询所有权限，并且级联所属子权限）success", privilegeService.findAllWithChild());
+    }
+
+    @ApiOperation(value = "查询权限，并且级联相关角色")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
+    })
+    @GetMapping("/findWithRoleById")
+    public Message findWithRoleById(Long id) {
+        return MessageUtil.success("（查询权限，并且级联相关角色）success", privilegeService.findWithRoleById(id));
+    }
+
 }

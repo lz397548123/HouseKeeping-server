@@ -9,12 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 public interface AccountSystemMapper {
-    @Select("select * from jz_account_system")
-    List<AccountSystem> systemselectAll();
-
-    @Select("select * from jz_account_system where id = #{id}")
-    AccountSystem systemselectById(Long id);
-
     long countByExample(AccountSystemExample example);
 
     int deleteByExample(AccountSystemExample example);

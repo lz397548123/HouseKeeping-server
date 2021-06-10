@@ -208,13 +208,13 @@
     </update>
     <update id="updateByExample" parameterType="map">
         update base_privilege
-        set id        = #{record.id,jdbcType=BIGINT},
-            name      = #{record.name,jdbcType=VARCHAR},
-            path      = #{record.path,jdbcType=VARCHAR},
-            type      = #{record.type,jdbcType=VARCHAR},
-            icon      = #{record.icon,jdbcType=VARCHAR},
-            hidden    = #{record.hidden,jdbcType=INTEGER},
-            parent_id = #{record.parentId,jdbcType=BIGINT}
+        set id = #{record.id,jdbcType=BIGINT},
+        name = #{record.name,jdbcType=VARCHAR},
+        path = #{record.path,jdbcType=VARCHAR},
+        type = #{record.type,jdbcType=VARCHAR},
+        icon = #{record.icon,jdbcType=VARCHAR},
+        hidden = #{record.hidden,jdbcType=INTEGER},
+        parent_id = #{record.parentId,jdbcType=BIGINT}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>

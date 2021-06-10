@@ -2,7 +2,9 @@ package com.zzuli.housekeepingserver.service.impl;
 
 import com.zzuli.housekeepingserver.bean.AccountEmployee;
 import com.zzuli.housekeepingserver.bean.AccountEmployeeExample;
+import com.zzuli.housekeepingserver.bean.extend.AccountEmployeeExtend;
 import com.zzuli.housekeepingserver.dao.AccountEmployeeMapper;
+import com.zzuli.housekeepingserver.dao.extend.AccountEmployeeExtendMapper;
 import com.zzuli.housekeepingserver.service.AccountEmployeeService;
 import com.zzuli.housekeepingserver.utils.CustomerException;
 import org.springframework.stereotype.Service;
@@ -15,18 +17,33 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/4       员工账户管理业务实现类
+ * liang         2021/6/4       员工业务实现类
  */
 
 @Service
 public class AccountEmployeeServiceImpl implements AccountEmployeeService {
-
     @Resource
     private AccountEmployeeMapper accountEmployeeMapper;
+    @Resource
+    private AccountEmployeeExtendMapper accountEmployeeExtendMapper;
 
     @Override
     public List<AccountEmployee> findAll() {
         return accountEmployeeMapper.selectByExample(new AccountEmployeeExample());
+    }
+
+    @Override
+    public AccountEmployee findById(Long id) {
+        return accountEmployeeMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void saveOrUpdate(AccountEmployee accountEmployee) throws CustomerException {
+        if (accountEmployee.getId() != null) {
+            accountEmployeeMapper.updateByPrimaryKey(accountEmployee);
+        } else {
+            accountEmployeeMapper.insert(accountEmployee);
+        }
     }
 
     @Override
@@ -42,11 +59,7 @@ public class AccountEmployeeServiceImpl implements AccountEmployeeService {
     }
 
     @Override
-    public void saveOrUpdate(AccountEmployee accountEmployee) throws CustomerException {
-        if (accountEmployee.getId() != null) {
-            accountEmployeeMapper.updateByPrimaryKey(accountEmployee);
-        } else {
-            accountEmployeeMapper.insert(accountEmployee);
-        }
+    public List<AccountEmployeeExtend> findAllWithOrderAndUser() {
+        return accountEmployeeExtendMapper.selectAllWithOrderAndUser();
     }
 }

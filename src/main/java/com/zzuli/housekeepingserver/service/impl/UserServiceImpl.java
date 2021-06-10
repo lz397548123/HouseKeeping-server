@@ -22,16 +22,24 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
     @Resource
     private UserMapper userMapper;
-
     @Resource
     private UserExtendMapper userExtendMapper;
 
     @Override
     public List<User> findAll() {
         return userMapper.selectByExample(new UserExample());
+    }
+
+    @Override
+    public List<UserExtend> findAllEmployee() {
+        return userExtendMapper.selectAllEmployee();
+    }
+
+    @Override
+    public User findById(Long id) {
+        return userMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -58,10 +66,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserExtend> findAllWithRole() {
         return userExtendMapper.selectAllWithRole();
-    }
-
-    @Override
-    public List<UserExtend> findAllWithEmployee() {
-        return userExtendMapper.selectAllWithEmployee();
     }
 }

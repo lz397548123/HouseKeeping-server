@@ -1,6 +1,7 @@
 package com.zzuli.housekeepingserver.service.impl;
 
 import com.zzuli.housekeepingserver.bean.Role;
+import com.zzuli.housekeepingserver.bean.RoleExample;
 import com.zzuli.housekeepingserver.bean.extend.RoleExtend;
 import com.zzuli.housekeepingserver.dao.PrivilegeMapper;
 import com.zzuli.housekeepingserver.dao.RoleMapper;
@@ -18,39 +19,37 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/4       权限业务实现
+ * liang         2021/6/4       权限业务实现类
  */
 
 @Service
 public class RoleServiceImpl implements RoleService {
-
     @Resource
     private RoleMapper roleMapper;
-
     @Resource
     private RoleExtendMapper roleExtendMapper;
 
+    @Override
+    public List<Role> findAll() {
+        return roleMapper.selectByExample(new RoleExample());
+    }
+    @Override
+    public Role findById(Long id) {
+        return roleMapper.selectByPrimaryKey(id);
+    }
 
-    /**
-     * 查询角色带权限
-     *
-     * @param id 编号
-     * @return List<RoleExtend>
-     */
     @Override
     public List<RoleExtend> findWithPrivilegeById(Long id) {
         return roleExtendMapper.selectWithPrivilegeById(id);
     }
 
-    /**
-     * 根据编号ID查找角色，一个id只有一种类型的编号
-     *
-     * @param id 编号
-     * @return Role
-     */
     @Override
-    public Role findById(Long id) {
-        return roleMapper.selectByPrimaryKey(id);
+    public void saveOrUpdate(Role role) throws CustomerException {
+        if (role.getId() != null) {
+            roleMapper.updateByPrimaryKey(role);
+        } else {
+            roleMapper.insert(role);
+        }
     }
 
     @Override
@@ -63,14 +62,5 @@ public class RoleServiceImpl implements RoleService {
         }
         // 当存在，删除
         roleMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public void saveOrUpdate(Role role) throws CustomerException {
-        if (role.getId() != null) {
-            roleMapper.updateByPrimaryKey(role);
-        } else {
-            roleMapper.insert(role);
-        }
     }
 }

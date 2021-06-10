@@ -9,12 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 public interface AccountEmployeeMapper {
-    @Select("select * from jz_account_employee")
-    List<AccountEmployee> employeeselectAll();
-
-    @Select("select * from jz_account_employee where id = #{id}")
-    AccountEmployee employeeselectById(Long id);
-
     long countByExample(AccountEmployeeExample example);
 
     int deleteByExample(AccountEmployeeExample example);

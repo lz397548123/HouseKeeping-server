@@ -24,13 +24,17 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Resource
     private ProductMapper productMapper;
-
     @Resource
     private ProductExtendMapper productExtendMapper;
 
     @Override
     public List<Product> findAll() {
         return productMapper.selectByExample(new ProductExample());
+    }
+
+    @Override
+    public Product findById(Long id) {
+        return productMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -53,11 +57,6 @@ public class ProductServiceImpl implements ProductService {
         }
         // 当存在，删除
         productMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public Product findProductById(Long id) {
-        return productMapper.selectByPrimaryKey(id);
     }
 
     @Override

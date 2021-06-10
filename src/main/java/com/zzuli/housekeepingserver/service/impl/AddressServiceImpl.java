@@ -2,7 +2,9 @@ package com.zzuli.housekeepingserver.service.impl;
 
 import com.zzuli.housekeepingserver.bean.Address;
 import com.zzuli.housekeepingserver.bean.AddressExample;
+import com.zzuli.housekeepingserver.bean.extend.AddressExtend;
 import com.zzuli.housekeepingserver.dao.AddressMapper;
+import com.zzuli.housekeepingserver.dao.extend.AddressExtendMapper;
 import com.zzuli.housekeepingserver.service.AddressService;
 import com.zzuli.housekeepingserver.utils.CustomerException;
 import org.springframework.stereotype.Service;
@@ -20,9 +22,27 @@ import java.util.List;
 
 @Service
 public class AddressServiceImpl implements AddressService {
-
     @Resource
     private AddressMapper addressMapper;
+    @Resource
+    private AddressExtendMapper addressExtendMapper;
+
+    @Override
+    public List<Address> findAll() {
+        return addressMapper.selectByExample(new AddressExample());
+    }
+
+    @Override
+    public Address findById(Long id) {
+        return addressMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Address> findByUserId(Long userId) {
+        AddressExample addressExample = new AddressExample();
+        addressExample.createCriteria().andUserIdEqualTo(userId);
+        return addressMapper.selectByExample(addressExample);
+    }
 
     @Override
     public void saveOrUpdate(Address address) throws CustomerException {
@@ -46,9 +66,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<Address> findAllWithUserId(Long id) {
-        AddressExample addressExample = new AddressExample();
-        addressExample.createCriteria().andUserIdEqualTo(id);
-        return addressMapper.selectByExample(addressExample);
+    public List<AddressExtend> findAllWithUser() {
+        return addressExtendMapper.selectAllWithUser();
     }
 }

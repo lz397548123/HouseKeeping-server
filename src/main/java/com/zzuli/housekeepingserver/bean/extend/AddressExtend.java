@@ -2,6 +2,8 @@ package com.zzuli.housekeepingserver.bean.extend;
 
 import com.zzuli.housekeepingserver.bean.Address;
 
+import java.util.List;
+
 /**
  * 类说明：
  * Modify Information:
@@ -11,4 +13,13 @@ import com.zzuli.housekeepingserver.bean.Address;
  */
 
 public class AddressExtend extends Address {
+    List<Address> children;
+
+    public List<Address> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Address> children) {
+        this.children = children;
+    }
 }

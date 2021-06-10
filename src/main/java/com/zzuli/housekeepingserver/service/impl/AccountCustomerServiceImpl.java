@@ -17,14 +17,13 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/8       用户账户管理业务实现类
+ * liang         2021/6/8       顾客业务实现类
  */
 
 @Service
 public class AccountCustomerServiceImpl implements AccountCustomerService {
     @Resource
     private AccountCustomerMapper accountCustomerMapper;
-
     @Resource
     private AccountCustomerExtendMapper accountCustomerExtendMapper;
 
@@ -34,13 +33,17 @@ public class AccountCustomerServiceImpl implements AccountCustomerService {
     }
 
     @Override
-    public List<AccountCustomerExtend> findAllWithOrderAndUser() {
-        return accountCustomerExtendMapper.selectAllWithOrderAndUser();
+    public AccountCustomer findById(Long id) {
+        return accountCustomerMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public AccountCustomer findById(Long id) {
-        return accountCustomerMapper.selectByPrimaryKey(id);
+    public void saveOrUpdate(AccountCustomer accountCustomer) throws CustomerException {
+        if (accountCustomer.getId() != null) {
+            accountCustomerMapper.updateByPrimaryKey(accountCustomer);
+        } else {
+            accountCustomerMapper.insert(accountCustomer);
+        }
     }
 
     @Override
@@ -56,11 +59,7 @@ public class AccountCustomerServiceImpl implements AccountCustomerService {
     }
 
     @Override
-    public void saveOrUpdate(AccountCustomer accountCustomer) throws CustomerException {
-        if (accountCustomer.getId() != null) {
-            accountCustomerMapper.updateByPrimaryKey(accountCustomer);
-        } else {
-            accountCustomerMapper.insert(accountCustomer);
-        }
+    public List<AccountCustomerExtend> findAllWithOrderAndUser() {
+        return accountCustomerExtendMapper.selectAllWithOrderAndUser();
     }
 }

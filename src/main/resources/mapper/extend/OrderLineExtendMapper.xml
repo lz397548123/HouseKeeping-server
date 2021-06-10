@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zzuli.housekeepingserver.dao.extend.OrderLineExtendMapper">
     <select id="selectByOrderId" resultMap="OrderLineExtendResultMap">
         SELECT *
         FROM jz_order_line
         WHERE order_id = #{orderId}
     </select>
+    <select id="selectAllAboutProduct" resultType="com.zzuli.housekeepingserver.bean.extend.OrderLineExtend"></select>
 
     <resultMap id="OrderLineExtendResultMap" type="com.zzuli.housekeepingserver.bean.extend.OrderLineExtend"
                extends="com.zzuli.housekeepingserver.dao.OrderLineMapper.BaseResultMap">
