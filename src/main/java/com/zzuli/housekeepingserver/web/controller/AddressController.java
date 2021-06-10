@@ -9,10 +9,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 类说明：
@@ -37,7 +34,7 @@ public class AddressController {
     }
 
     @ApiOperation(value = "findAllWithUserId（通过用户id查询地址信息）")
-    @PostMapping("/findAllWithUserId")
+    @GetMapping("/findAllWithUserId")
     public Message findAllWithUserId(Long id) {
         return MessageUtil.success("success", addressService.findAllWithUserId(id));
     }
@@ -46,7 +43,7 @@ public class AddressController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
     })
-    @PostMapping("/deleteById")
+    @GetMapping("/deleteById")
     public Message deleteById(Long id) {
         addressService.deleteById(id);
         return MessageUtil.success("删除成功");

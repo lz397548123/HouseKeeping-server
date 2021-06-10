@@ -6,6 +6,7 @@ import com.zzuli.housekeepingserver.utils.MessageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,13 +27,13 @@ public class OrderLineController {
     private OrderLineServiceImpl orderLineService;
 
     @ApiOperation(value = "根据订单编号ID查询订单项")
-    @PostMapping("/findByOrderId")
+    @GetMapping("/findByOrderId")
     public Message findByOrderId(Long id) {
         return MessageUtil.success("success", orderLineService.findByOrderId(id));
     }
 
     @ApiOperation(value = "根据产品编号ID查询订单项")
-    @PostMapping("/findByProductId")
+    @GetMapping("/findByProductId")
     public Message findByProductId(Long id) {
         return MessageUtil.success("success", orderLineService.findByProductId(id));
     }

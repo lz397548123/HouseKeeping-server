@@ -33,13 +33,13 @@ public class RoleController {
      * @return Message
      */
     @ApiOperation(value = "findWithPrivilegeById（通过ID查找角色信息带权限）")
-    @PostMapping("/findWithPrivilegeById")
+    @GetMapping("/findWithPrivilegeById")
     public Message findWithPrivilegeById(Long id) {
         return MessageUtil.success("通过ID查找角色信息带权success", roleService.findWithPrivilegeById(id));
     }
 
     @ApiOperation(value = "findById（通过ID查找角色信息，结果唯一）")
-    @PostMapping("/findById")
+    @GetMapping("/findById")
     public Message findById(Long id) {
         return MessageUtil.success("根据id查找角色success", roleService.findById(id));
     }

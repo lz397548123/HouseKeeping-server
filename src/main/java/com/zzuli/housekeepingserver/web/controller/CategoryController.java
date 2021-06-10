@@ -54,7 +54,7 @@ public class CategoryController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "id（唯一编号）", required = true, paramType = "query")
     })
-    @PostMapping("/deleteById")
+    @GetMapping("/deleteById")
     public Message deleteById(Long id) {
         categoryService.deleteById(id);
         return MessageUtil.success("删除成功");
