@@ -9,7 +9,7 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/4       权限接口的扩展类
+ * liang         2021/6/4       权限扩展接口
  */
 
 public interface PrivilegeExtendMapper {

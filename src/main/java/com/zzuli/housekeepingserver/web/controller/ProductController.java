@@ -1,7 +1,7 @@
 package com.zzuli.housekeepingserver.web.controller;
 
 import com.zzuli.housekeepingserver.bean.Product;
-import com.zzuli.housekeepingserver.bean.extend.ProductExtend;
+import com.zzuli.housekeepingserver.service.ProductService;
 import com.zzuli.housekeepingserver.service.impl.ProductServiceImpl;
 import com.zzuli.housekeepingserver.utils.Message;
 import com.zzuli.housekeepingserver.utils.MessageUtil;
@@ -9,10 +9,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * 类说明：
@@ -26,9 +26,10 @@ import java.util.List;
 @RequestMapping("/product")
 @Api(description = "产品管理接口")
 public class ProductController {
+    Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
-    private ProductServiceImpl productService;
+    private ProductService productService;
 
     @ApiOperation(value = "findAll（查询所有）")
     @GetMapping("/findAll")
@@ -50,6 +51,7 @@ public class ProductController {
     @ApiOperation(value = "saveOrUpdate（保存或更新信息）")
     @PostMapping("/saveOrUpdate")
     public Message saveOrUpdate(@RequestBody Product product) {
+        System.out.println(product.toString());
         productService.saveOrUpdate(product);
         return MessageUtil.success("保存或更新信息成功");
     }
@@ -60,6 +62,8 @@ public class ProductController {
     })
     @GetMapping("/deleteById")
     public Message deleteById(Long id) {
+        System.out.println(id);
+        logger.debug(id.toString());
         productService.deleteById(id);
         return MessageUtil.success("通过ID删除产品信息成功");
     }

@@ -8,7 +8,7 @@
         WHERE parent_id IS NULL
     </select>
 
-    <select id="selectByParentId" resultMap="CommentExtendResultMap">
+    <select id="selectById" resultMap="CommentExtendResultMap">
         SELECT *
         FROM jz_comment
         WHERE parent_id = #{id}
@@ -17,6 +17,6 @@
     <resultMap id="CommentExtendResultMap" type="com.zzuli.housekeepingserver.bean.extend.CommentExtend"
                extends="com.zzuli.housekeepingserver.dao.CommentMapper.BaseResultMap">
         <collection property="children" ofType="com.zzuli.housekeepingserver.bean.Comment"
-                    column="id" select="selectByParentId"/>
+                    column="id" select="selectById"/>
     </resultMap>
 </mapper>

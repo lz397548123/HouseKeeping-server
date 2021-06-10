@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzuli.housekeepingserver.dao.extend.AccountSystemExtendMapper">
+    <select id="selectAllWithOrderAndUser" resultMap="AccountSystemExtendResultMap">
+        SELECT *
+        FROM jz_account_system
+    </select>
+
+    <resultMap id="AccountSystemExtendResultMap" type="com.zzuli.housekeepingserver.bean.extend.AccountSystemExtend"
+               extends="com.zzuli.housekeepingserver.dao.AccountSystemMapper.BaseResultMap">
+        <association property="order"
+                     column="order_id"
+                     select="com.zzuli.housekeepingserver.dao.OrderMapper.selectByPrimaryKey"
+        />
+        <association property="user"
+                     column="user_id"
+                     select="com.zzuli.housekeepingserver.dao.UserMapper.selectByPrimaryKey"
+        />
+    </resultMap>
+</mapper>

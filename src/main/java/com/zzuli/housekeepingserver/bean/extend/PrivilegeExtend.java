@@ -24,7 +24,6 @@ public class PrivilegeExtend extends Privilege {
 
     List<Privilege> children;
 
-    //    private Role role;
     List<RoleExtend> roles;
 
     public List<RoleExtend> getRoles() {
@@ -34,27 +33,10 @@ public class PrivilegeExtend extends Privilege {
     public void setRoles(List<RoleExtend> roles) {
         this.roles = roles;
     }
-//    private RolePrivilege rolePrivilege;
 
     public List<Privilege> getChildren() {
         return children;
     }
-
-//    public Role getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(Role role) {
-//        this.role = role;
-//    }
-//
-//    public RolePrivilege getRolePrivilege() {
-//        return rolePrivilege;
-//    }
-//
-//    public void setRolePrivilege(RolePrivilege rolePrivilege) {
-//        this.rolePrivilege = rolePrivilege;
-//    }
 
     public void setChildren(List<Privilege> children) {
         this.children = children;

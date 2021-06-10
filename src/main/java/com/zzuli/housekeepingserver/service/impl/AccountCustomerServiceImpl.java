@@ -2,7 +2,9 @@ package com.zzuli.housekeepingserver.service.impl;
 
 import com.zzuli.housekeepingserver.bean.AccountCustomer;
 import com.zzuli.housekeepingserver.bean.AccountCustomerExample;
+import com.zzuli.housekeepingserver.bean.extend.AccountCustomerExtend;
 import com.zzuli.housekeepingserver.dao.AccountCustomerMapper;
+import com.zzuli.housekeepingserver.dao.extend.AccountCustomerExtendMapper;
 import com.zzuli.housekeepingserver.service.AccountCustomerService;
 import com.zzuli.housekeepingserver.utils.CustomerException;
 import org.springframework.stereotype.Service;
@@ -23,9 +25,22 @@ public class AccountCustomerServiceImpl implements AccountCustomerService {
     @Resource
     private AccountCustomerMapper accountCustomerMapper;
 
+    @Resource
+    private AccountCustomerExtendMapper accountCustomerExtendMapper;
+
     @Override
     public List<AccountCustomer> findAll() {
         return accountCustomerMapper.selectByExample(new AccountCustomerExample());
+    }
+
+    @Override
+    public List<AccountCustomerExtend> findAllWithOrderAndUser() {
+        return accountCustomerExtendMapper.selectAllWithOrderAndUser();
+    }
+
+    @Override
+    public AccountCustomer findById(Long id) {
+        return accountCustomerMapper.selectByPrimaryKey(id);
     }
 
     @Override

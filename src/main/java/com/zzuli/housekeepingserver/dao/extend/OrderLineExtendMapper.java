@@ -7,11 +7,13 @@ import java.util.List;
 /**
  * 类说明：
  * Modify Information:
- * Author        Date          Description
+ * Author        Date           Description
  * ============ =========== ============================
- * liang         2021/6/4       订单项扩展接口
+ * liang         2021/6/4       订单列表扩展接口
  */
 
 public interface OrderLineExtendMapper {
     List<OrderLineExtend> selectByOrderId(Long orderId);
+
+    List<OrderLineExtend> selectAllAboutProduct();
 }

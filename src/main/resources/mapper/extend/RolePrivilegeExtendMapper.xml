@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzuli.housekeepingserver.dao.extend.RolePrivilegeExtendMapper">
+
+    <select id="selectAllWithRoleAndPrivilege" resultMap="ExtendResultMap">
+        SELECT *
+        FROM base_role_privilege
+    </select>
+
+    <resultMap id="ExtendResultMap" type="com.zzuli.housekeepingserver.bean.extend.RolePrivilegeExtend"
+               extends="com.zzuli.housekeepingserver.dao.RolePrivilegeMapper.BaseResultMap">
+        <association property="role"
+                     column="role_id"
+                     select="com.briup.jz.dao.RoleMapper.selectByPrimaryKey"
+        />
+        <association property="privilege"
+                     column="privilege_id"
+                     select="com.briup.jz.dao.PrivilegeMapper.selectByPrimaryKey"
+        />
+    </resultMap>
+</mapper>

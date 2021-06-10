@@ -45,6 +45,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteById(Long id) throws CustomerException {
         // 先判断该id对应的数据存在不？
+        System.out.println("service:" + id);
         Product product = productMapper.selectByPrimaryKey(id);
         if (product == null) {
             // 当不存在，报错！删除

@@ -25,6 +25,7 @@ public class OrderExtend extends Order {
     private User customer;
     private User employee;
     private Address address;
+
     private List<OrderLine> orderLines;
 
     public List<OrderLine> getOrderLines() {

@@ -16,8 +16,8 @@
                rp.role_id,
                rp.privilege_id
         FROM base_role r
-                     LEFT JOIN base_role_privilege rp ON r.id = rp.role_id
-                     LEFT JOIN base_privilege p ON rp.privilege_id = p.id
+                 LEFT JOIN base_role_privilege rp ON r.id = rp.role_id
+                 LEFT JOIN base_privilege p ON rp.privilege_id = p.id
         WHERE r.id = #{id}
     </select>
 

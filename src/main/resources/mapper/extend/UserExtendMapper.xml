@@ -16,6 +16,7 @@
     <resultMap id="UserExtendResultMap"
                type="com.zzuli.housekeepingserver.bean.extend.UserExtend"
                extends="com.zzuli.housekeepingserver.dao.UserMapper.BaseResultMap">
-        <association property="role" column="role_id" select="com.zzuli.housekeepingserver.dao.RoleMapper.selectByPrimaryKey"/>
+        <association property="role" column="role_id"
+                     select="com.zzuli.housekeepingserver.dao.RoleMapper.selectByPrimaryKey"/>
     </resultMap>
 </mapper>

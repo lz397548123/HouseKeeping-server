@@ -38,7 +38,7 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("家政服务预约平台")
+                .title("家政服务平台")
                 .description("第二十三组，http://www.xxx.com")
                 .termsOfServiceUrl("http://www.xxx.com")
                 .version("1.0")

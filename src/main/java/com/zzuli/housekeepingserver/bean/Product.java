@@ -84,4 +84,18 @@ public class Product implements Serializable {
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", introduce='" + introduce + '\'' +
+                ", price='" + price + '\'' +
+                ", status='" + status + '\'' +
+                ", photo='" + photo + '\'' +
+                ", sales=" + sales +
+                ", categoryId=" + categoryId +
+                '}';
+    }
 }

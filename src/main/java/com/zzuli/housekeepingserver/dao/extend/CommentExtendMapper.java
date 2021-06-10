@@ -1,5 +1,6 @@
 package com.zzuli.housekeepingserver.dao.extend;
 
+import com.zzuli.housekeepingserver.bean.Comment;
 import com.zzuli.housekeepingserver.bean.extend.CommentExtend;
 
 import java.util.List;
@@ -9,9 +10,11 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/4       评论接口的扩展类
+ * liang         2021/6/4       评价扩展接口
  */
 
 public interface CommentExtendMapper {
     List<CommentExtend> selectAllWithChild();
+
+    List<Comment> selectById(Long id);
 }

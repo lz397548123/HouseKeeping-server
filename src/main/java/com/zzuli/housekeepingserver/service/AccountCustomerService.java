@@ -1,6 +1,7 @@
 package com.zzuli.housekeepingserver.service;
 
 import com.zzuli.housekeepingserver.bean.AccountCustomer;
+import com.zzuli.housekeepingserver.bean.extend.AccountCustomerExtend;
 import com.zzuli.housekeepingserver.utils.CustomerException;
 
 import java.util.List;
@@ -10,11 +11,15 @@ import java.util.List;
  * Modify Information:
  * Author        Date          Description
  * ============ =========== ============================
- * liang         2021/6/4       用户账户管理业务接口
+ * liang         2021/6/4       顾客业务接口
  */
 
 public interface AccountCustomerService {
     List<AccountCustomer> findAll();
+
+    List<AccountCustomerExtend> findAllWithOrderAndUser();
+
+    AccountCustomer findById(Long id);
 
     void deleteById(Long id) throws CustomerException;
 
