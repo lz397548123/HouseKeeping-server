@@ -67,4 +67,33 @@ public class UserServiceImpl implements UserService {
     public List<UserExtend> findAllWithRole() {
         return userExtendMapper.selectAllWithRole();
     }
+
+    @Override
+    public List<User> findExample(User user) throws CustomerException {
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+
+        // 不去重
+        example.setDistinct(false);
+
+        // 姓名模糊查询
+        if (user.getRealname() != null) {
+            criteria.andRealnameLike('%' + user.getRealname() + '%');
+        }
+        // 电话号码模糊查询
+        if (user.getTelephone() != null) {
+            criteria.andTelephoneLike('%' + user.getTelephone() + '%');
+        }
+        // 用户性别查询
+        if (user.getGender() != null) {
+            criteria.andGenderEqualTo(user.getGender());
+        }
+        // 状态查询
+        if (user.getStatus() != null) {
+            criteria.andStatusEqualTo(user.getStatus());
+        }
+
+        List<User> list = userMapper.selectByExample(example);
+        return list;
+    }
 }

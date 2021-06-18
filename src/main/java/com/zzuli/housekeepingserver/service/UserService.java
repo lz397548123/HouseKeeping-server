@@ -26,4 +26,7 @@ public interface UserService {
     void deleteById(Long id) throws CustomerException;
 
     List<UserExtend> findAllWithRole();
+
+    // 多条件查询
+    List<User> findExample(User user) throws CustomerException;
 }

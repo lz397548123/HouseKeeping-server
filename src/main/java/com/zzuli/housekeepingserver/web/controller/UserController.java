@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 类说明：
  * Modify Information:
@@ -92,9 +94,27 @@ public class UserController {
     }
 
 
-    @ApiOperation(value = "findAllWithRole（查询所有用户，并且级联获得用户角色）")
+    @ApiOperation(value = "查询所有用户，并且级联获得用户角色")
     @GetMapping("/findAllWithRole")
     public Message findAllWithRole() {
         return MessageUtil.success("success", userService.findAllWithRole());
+    }
+
+    /**
+     * 多条件查询用户信息
+     *
+     * @param
+     * @return
+     */
+    @ApiOperation(value = "多条件查询用户信息")
+    @PostMapping("/findExample")
+    public Message findExample(String realName, String gender, String status, String telephone) {
+        User user = new User();
+        user.setRealname(realName);
+        user.setGender(gender);
+        user.setTelephone(telephone);
+        user.setStatus(status);
+        List<User> list = userService.findExample(user);
+        return MessageUtil.success(list);
     }
 }

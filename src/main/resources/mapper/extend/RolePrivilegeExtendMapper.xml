@@ -9,8 +9,8 @@
     <resultMap id="ExtendResultMap" type="com.zzuli.housekeepingserver.bean.extend.RolePrivilegeExtend"
                extends="com.zzuli.housekeepingserver.dao.RolePrivilegeMapper.BaseResultMap">
         <association property="role" column="role_id"
-                     select="com.briup.jz.dao.RoleMapper.selectByPrimaryKey"/>
+                     select="com.zzuli.housekeepingserver.dao.RoleMapper.selectByPrimaryKey"/>
         <association property="privilege" column="privilege_id"
-                     select="com.briup.jz.dao.PrivilegeMapper.selectByPrimaryKey"/>
+                     select="com.zzuli.housekeepingserver.dao.PrivilegeMapper.selectByPrimaryKey"/>
     </resultMap>
 </mapper>
